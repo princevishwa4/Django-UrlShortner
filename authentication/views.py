@@ -45,12 +45,6 @@ def register(request):
     else:
         return HttpResponseRedirect('/dashboard')
 
-def dashboard(request):
-    if not request.user.is_authenticated:
-        return render(request, 'authentication/login.html') 
-    else:
-        return render(request, 'authentication/dashboard.html') 
-
 
 def logout_view(request):
     logout(request)

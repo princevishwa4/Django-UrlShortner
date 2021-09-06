@@ -16,12 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from authentication import views
+from urlhandler.views import (
+    dashboard,
+    generate,
+    redirectUrl,
+    deleteurl
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', views.dashboard, name="dashboard"),
     path('', views.login_view, name="login"),
     path('login/', views.login_view, name="login"),
     path('register/', views.register, name="register"),
     path('logout/', views.logout_view, name="logout"),
+    path('dashboard/', dashboard, name="dashboard"),
+    path('generate/', generate, name="generate"),
+    path('delete/', deleteurl, name="deleteurl"),
+    path('<str:query>/', redirectUrl, name="redirectUrl"),
 ]
