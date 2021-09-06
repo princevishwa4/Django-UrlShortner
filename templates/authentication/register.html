@@ -1,0 +1,42 @@
+{% extends 'authentication/base.html' %}
+{% block content %}
+    <section class="mt-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-5 col-lg-4 mx-auto">
+                    <h3>Signup </h3>
+
+                    {% if error %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong>{{ error }}</strong>
+                        </div>
+                    {% endif %}
+
+                    <form action="" method="POST">
+                        {% csrf_token  %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-outline-success px-4" value="Signup">
+                        </div>
+                        <a class="card-link" href="{% url 'login' %}">Already Registered ? Login</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
